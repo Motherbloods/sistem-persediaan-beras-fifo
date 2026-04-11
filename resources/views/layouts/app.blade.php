@@ -94,7 +94,7 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="#" class="{{ request()->routeIs('users.*') ? 'active' : '' }}">
+                    <a href="{{ route('users.index') }}" class="{{ request()->routeIs('users.*') ? 'active' : '' }}">
                         <i class="bi bi-people"></i> Pengguna
                     </a>
                 </div>
@@ -102,7 +102,7 @@
 
             <div class="nav-label">Akun</div>
             <div class="nav-item">
-                <a href="#" class="{{ request()->routeIs('profil') ? 'active' : '' }}">
+                <a href="{{ route('profil') }}" class="{{ request()->routeIs('profil') ? 'active' : '' }}">
                     <i class="bi bi-person-circle"></i> Profil Saya
                 </a>
             </div>
