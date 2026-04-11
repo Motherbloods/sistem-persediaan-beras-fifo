@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\JenisBerasController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn() => redirect()->route('dashboard'));
@@ -20,4 +21,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return 'Dashboard';
     })->name('dashboard');
+
+    Route::get('/monitoring', function () {
+        return 'Monitoring';
+    })->name('monitoring');
+});
+Route::middleware('role:admin')->group(function () {
+
+    // Master data
+    Route::resource('jenis-beras', JenisBerasController::class)
+        ->parameters([
+            'jenis-beras' => 'jenisBeras'
+        ]);
 });
