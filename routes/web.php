@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\JenisBerasController;
+use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn() => redirect()->route('dashboard'));
@@ -33,4 +34,5 @@ Route::middleware('role:admin')->group(function () {
         ->parameters([
             'jenis-beras' => 'jenisBeras'
         ]);
+    Route::resource('supplier', SupplierController::class);
 });

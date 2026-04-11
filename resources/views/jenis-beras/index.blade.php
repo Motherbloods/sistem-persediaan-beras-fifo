@@ -72,7 +72,7 @@
             </div>
         </div>
         @if ($data->hasPages())
-            <div class="card-body border-top pt-3">{{ $data->links() }}</div>
+            <div class="card-body border-top pt-3">{{ $data->links('pagination::bootstrap-5') }}</div>
         @endif
     </div>
 @endsection
