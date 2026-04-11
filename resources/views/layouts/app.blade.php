@@ -52,14 +52,12 @@
 
             <div class="nav-label">Transaksi</div>
             <div class="nav-item">
-                <a href="{{ route('stok-masuk.index') }}"
-                    class="{{ request()->routeIs('stok-masuk.*') ? 'active' : '' }}">
+                <a href="#" class="{{ request()->routeIs('stok-masuk.*') ? 'active' : '' }}">
                     <i class="bi bi-arrow-down-circle"></i> Stok Masuk
                 </a>
             </div>
             <div class="nav-item">
-                <a href="{{ route('stok-keluar.index') }}"
-                    class="{{ request()->routeIs('stok-keluar.*') ? 'active' : '' }}">
+                <a href="#" class="{{ request()->routeIs('stok-keluar.*') ? 'active' : '' }}">
                     <i class="bi bi-arrow-up-circle"></i> Stok Keluar
                 </a>
             </div>
@@ -67,20 +65,17 @@
             @if (auth()->user()->isAdmin())
                 <div class="nav-label">Laporan</div>
                 <div class="nav-item">
-                    <a href="{{ route('laporan.masuk') }}"
-                        class="{{ request()->routeIs('laporan.masuk*') ? 'active' : '' }}">
+                    <a href="#" class="{{ request()->routeIs('laporan.masuk*') ? 'active' : '' }}">
                         <i class="bi bi-file-earmark-bar-graph"></i> Laporan Masuk
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="{{ route('laporan.keluar') }}"
-                        class="{{ request()->routeIs('laporan.keluar*') ? 'active' : '' }}">
+                    <a href="#" class="{{ request()->routeIs('laporan.keluar*') ? 'active' : '' }}">
                         <i class="bi bi-file-earmark-arrow-up"></i> Laporan Keluar
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="{{ route('laporan.persediaan') }}"
-                        class="{{ request()->routeIs('laporan.persediaan*') ? 'active' : '' }}">
+                    <a href="#" class="{{ request()->routeIs('laporan.persediaan*') ? 'active' : '' }}">
                         <i class="bi bi-clipboard-data"></i> Laporan Persediaan
                     </a>
                 </div>
@@ -93,13 +88,12 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="{{ route('supplier.index') }}"
-                        class="{{ request()->routeIs('supplier.*') ? 'active' : '' }}">
+                    <a href="#" class="{{ request()->routeIs('supplier.*') ? 'active' : '' }}">
                         <i class="bi bi-truck"></i> Supplier
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="{{ route('users.index') }}" class="{{ request()->routeIs('users.*') ? 'active' : '' }}">
+                    <a href="#" class="{{ request()->routeIs('users.*') ? 'active' : '' }}">
                         <i class="bi bi-people"></i> Pengguna
                     </a>
                 </div>
@@ -107,7 +101,7 @@
 
             <div class="nav-label">Akun</div>
             <div class="nav-item">
-                <a href="{{ route('profil') }}" class="{{ request()->routeIs('profil') ? 'active' : '' }}">
+                <a href="#" class="{{ request()->routeIs('profil') ? 'active' : '' }}">
                     <i class="bi bi-person-circle"></i> Profil Saya
                 </a>
             </div>
