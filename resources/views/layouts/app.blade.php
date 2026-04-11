@@ -88,7 +88,8 @@
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="#" class="{{ request()->routeIs('supplier.*') ? 'active' : '' }}">
+                    <a href="{{ route('supplier.index') }}"
+                        class="{{ request()->routeIs('supplier.*') ? 'active' : '' }}">
                         <i class="bi bi-truck"></i> Supplier
                     </a>
                 </div>
