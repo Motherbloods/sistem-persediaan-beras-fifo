@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\JenisBerasController;
+use App\Http\Controllers\StokKeluarController;
+use App\Http\Controllers\StokMasukController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -21,12 +23,20 @@ Route::middleware('auth')->group(function () {
 
     // Dashboard
     Route::get('/dashboard', function () {
-        return 'Dashboard';
+        return view('dashboard.index');
     })->name('dashboard');
 
     Route::get('/monitoring', function () {
-        return 'Monitoring';
+        return view('monitoring.index');
     })->name('monitoring');
+
+    Route::resource('stok-masuk', StokMasukController::class)
+        ->only(['index', 'create', 'store', 'show'])
+        ->names('stok-masuk');
+
+    Route::resource('stok-keluar', StokKeluarController::class)
+        ->only(['index', 'create', 'store', 'show'])
+        ->names('stok-keluar');
 
     Route::get('/profil', [UserController::class, 'profil'])->name('profil');
     Route::put('/profil', [UserController::class, 'updateProfil'])->name('profil.update');
