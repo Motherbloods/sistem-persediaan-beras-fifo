@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JenisBerasController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\StokKeluarController;
 use App\Http\Controllers\StokMasukController;
@@ -38,14 +39,24 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/profil', [UserController::class, 'profil'])->name('profil');
     Route::put('/profil', [UserController::class, 'updateProfil'])->name('profil.update');
-});
-Route::middleware('role:admin')->group(function () {
 
-    // Master data
-    Route::resource('jenis-beras', JenisBerasController::class)
-        ->parameters([
-            'jenis-beras' => 'jenisBeras'
-        ]);
-    Route::resource('supplier', SupplierController::class);
-    Route::resource('users', UserController::class)->except(['show']);
+    Route::middleware('role:admin')->group(function () {
+
+        // Master data
+        Route::resource('jenis-beras', JenisBerasController::class)
+            ->parameters([
+                'jenis-beras' => 'jenisBeras'
+            ]);
+        Route::resource('supplier', SupplierController::class);
+        Route::resource('users', UserController::class)->except(['show']);
+
+        Route::prefix('laporan')->name('laporan.')->group(function () {
+            Route::get('/masuk', [LaporanController::class, 'masuk'])->name('masuk');
+            Route::get('/masuk/export', [LaporanController::class, 'exportMasuk'])->name('masuk.export');
+            Route::get('/keluar', [LaporanController::class, 'keluar'])->name('keluar');
+            Route::get('/keluar/export', [LaporanController::class, 'exportKeluar'])->name('keluar.export');
+            Route::get('/persediaan', [LaporanController::class, 'persediaan'])->name('persediaan');
+            Route::get('/persediaan/export', [LaporanController::class, 'exportPersediaan'])->name('persediaan.export');
+        });
+    });
 });

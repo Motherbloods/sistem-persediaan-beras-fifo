@@ -26,7 +26,7 @@
     <nav id="sidebar">
         <div class="sidebar-brand">
             <a href="{{ route('dashboard') }}" class="brand-logo">
-                <div class="brand-icon">
+                <div>
                     <img src="{{ asset('images/logo.png') }}" alt="Logo" style="width:40px;">
                 </div>
                 <div class="brand-text">
@@ -70,17 +70,20 @@
             @if (auth()->user()->isAdmin())
                 <div class="nav-label">Laporan</div>
                 <div class="nav-item">
-                    <a href="#" class="{{ request()->routeIs('laporan.masuk*') ? 'active' : '' }}">
+                    <a href="{{ route('laporan.masuk') }}"
+                        class="{{ request()->routeIs('laporan.masuk*') ? 'active' : '' }}">
                         <i class="bi bi-file-earmark-bar-graph"></i> Laporan Masuk
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="#" class="{{ request()->routeIs('laporan.keluar*') ? 'active' : '' }}">
+                    <a href="{{ route('laporan.keluar') }}"
+                        class="{{ request()->routeIs('laporan.keluar*') ? 'active' : '' }}">
                         <i class="bi bi-file-earmark-arrow-up"></i> Laporan Keluar
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a href="#" class="{{ request()->routeIs('laporan.persediaan*') ? 'active' : '' }}">
+                    <a href="{{ route('laporan.persediaan') }}"
+                        class="{{ request()->routeIs('laporan.persediaan*') ? 'active' : '' }}">
                         <i class="bi bi-clipboard-data"></i> Laporan Persediaan
                     </a>
                 </div>
