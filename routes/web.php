@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JenisBerasController;
+use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\StokKeluarController;
 use App\Http\Controllers\StokMasukController;
 use App\Http\Controllers\SupplierController;
@@ -22,13 +24,9 @@ Route::post('/logout', [AuthController::class, 'logout'])
 Route::middleware('auth')->group(function () {
 
     // Dashboard
-    Route::get('/dashboard', function () {
-        return view('dashboard.index');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/monitoring', function () {
-        return view('monitoring.index');
-    })->name('monitoring');
+    Route::get('/monitoring', [MonitoringController::class, 'index'])->name('monitoring');
 
     Route::resource('stok-masuk', StokMasukController::class)
         ->only(['index', 'create', 'store', 'show'])
