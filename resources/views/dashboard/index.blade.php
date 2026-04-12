@@ -53,7 +53,6 @@
             <h4>Selamat datang, {{ auth()->user()->name }} 👋</h4>
             <p>{{ now()->translatedFormat('l, d F Y') }} &mdash; Data persediaan diperbarui secara langsung.</p>
         </div>
-        <div class="welcome-icon"><i class="bi bi-box-seam"></i></div>
     </div>
 
     @if ($berasMenipis->count() > 0)

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Dashboard') — SiPadi CV Santri Abadi</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
@@ -25,7 +26,9 @@
     <nav id="sidebar">
         <div class="sidebar-brand">
             <a href="{{ route('dashboard') }}" class="brand-logo">
-                <div class="brand-icon"><i class="bi bi-box-seam"></i></div>
+                <div class="brand-icon">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" style="width:40px;">
+                </div>
                 <div class="brand-text">
                     <strong>SiPadi</strong>
                     <span>CV Santri Abadi</span>
@@ -111,7 +114,10 @@
         </div>
 
         <div class="sidebar-user">
-            <div class="user-avatar">{{ strtoupper(substr(auth()->user()->name, 0, 2)) }}</div>
+            <div>
+                <img src="{{ asset('images/user.png') }}" alt="User" class="avatar-img"
+                    style="width: 40px; height: 40px;">
+            </div>
             <div class="user-info">
                 <strong>{{ auth()->user()->name }}</strong>
                 <span>{{ auth()->user()->role }}</span>
