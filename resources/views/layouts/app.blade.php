@@ -52,12 +52,14 @@
 
             <div class="nav-label">Transaksi</div>
             <div class="nav-item">
-                <a href="#" class="{{ request()->routeIs('stok-masuk.*') ? 'active' : '' }}">
+                <a href="{{ route('stok-masuk.index') }}"
+                    class="{{ request()->routeIs('stok-masuk.*') ? 'active' : '' }}">
                     <i class="bi bi-arrow-down-circle"></i> Stok Masuk
                 </a>
             </div>
             <div class="nav-item">
-                <a href="#" class="{{ request()->routeIs('stok-keluar.*') ? 'active' : '' }}">
+                <a href="{{ route('stok-keluar.index') }}"
+                    class="{{ request()->routeIs('stok-keluar.*') ? 'active' : '' }}">
                     <i class="bi bi-arrow-up-circle"></i> Stok Keluar
                 </a>
             </div>
