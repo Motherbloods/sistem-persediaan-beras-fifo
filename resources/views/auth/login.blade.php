@@ -254,7 +254,9 @@
         {{-- Panel kiri --}}
         <div class="login-panel-left">
             <div class="panel-brand">
-                <div class="panel-brand-icon"><i class="bi bi-box-seam"></i></div>
+                <div>
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" style="width: 40px; height: 40px;">
+                </div>
                 <div class="panel-brand-text">
                     <strong>SiPadi</strong>
                     <span>Sistem Informasi Persediaan</span>
