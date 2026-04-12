@@ -1,59 +1,236 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SiPadi — Sistem Informasi Persediaan Beras
+## CV Santri Abadi Indonesia
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistem informasi persediaan beras berbasis web menggunakan **Laravel** dengan metode **FIFO (First In, First Out)**.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ⚙️ Teknologi
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| Komponen | Versi |
+|---|---|
+| PHP | >= 8.2 |
+| Laravel | 11.x |
+| MySQL | >= 8.0 |
+| Bootstrap | 5.3 |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 📁 Struktur Penempatan File
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Salin file-file dari output ke dalam project Laravel sesuai path berikut:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```
+app/
+├── Http/
+│   ├── Controllers/
+│   │   ├── AuthController.php
+│   │   ├── DashboardController.php
+│   │   ├── JenisBerasController.php
+│   │   ├── LaporanController.php
+│   │   ├── MonitoringController.php
+│   │   ├── StokKeluarController.php
+│   │   ├── StokMasukController.php
+│   │   ├── SupplierController.php
+│   │   └── UserController.php
+│   └── Middleware/
+│       └── CheckRole.php
+├── Models/
+│   ├── FifoQueue.php
+│   ├── JenisBeras.php
+│   ├── Supplier.php
+│   ├── StokKeluar.php
+│   ├── StokMasuk.php
+│   └── User.php
+└── Services/
+    └── FifoService.php
 
-## Laravel Sponsors
+bootstrap/
+└── app.php
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+database/
+├── migrations/
+│   └── 2026_01_01_000001_create_all_tables.php
+└── seeders/
+    ├── DatabaseSeeder.php
+    ├── JenisBerasSeeder.php
+    ├── SupplierSeeder.php
+    └── UserSeeder.php
 
-### Premium Partners
+resources/views/
+├── auth/login.blade.php
+├── dashboard/index.blade.php
+├── errors/403.blade.php
+├── jenis-beras/
+│   ├── index.blade.php
+│   ├── create.blade.php
+│   └── edit.blade.php
+├── laporan/
+│   ├── masuk.blade.php
+│   ├── keluar.blade.php
+│   ├── persediaan.blade.php
+│   └── pdf/
+│       ├── masuk.blade.php
+│       ├── keluar.blade.php
+│       └── persediaan.blade.php
+├── layouts/app.blade.php
+├── monitoring/index.blade.php
+├── partials/_filter.blade.php
+├── stok-masuk/
+│   ├── index.blade.php
+│   ├── create.blade.php
+│   └── show.blade.php
+├── stok-keluar/
+│   ├── index.blade.php
+│   ├── create.blade.php
+│   └── show.blade.php
+├── supplier/
+│   ├── index.blade.php
+│   ├── create.blade.php
+│   └── edit.blade.php
+└── users/
+    ├── index.blade.php
+    ├── create.blade.php
+    ├── edit.blade.php
+    └── profil.blade.php
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+routes/
+└── web.php
+```
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🚀 Langkah Instalasi
 
-## Code of Conduct
+### 1. Buat project Laravel baru
+```bash
+composer create-project laravel/laravel sipadi
+cd sipadi
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 2. Konfigurasi database di `.env`
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=sipadi_db
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## Security Vulnerabilities
+### 3. Buat database
+```sql
+CREATE DATABASE sipadi_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 4. Salin semua file ke dalam project
+Tempatkan file sesuai struktur di atas.
 
-## License
+### 5. Jalankan migration + seeder
+```bash
+php artisan migrate --seed
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Output yang diharapkan:
+```
+========================================
+  Seeding: Sistem Persediaan Beras
+  CV Santri Abadi Indonesia
+========================================
+  ✔ UserSeeder: 2 user berhasil dibuat.
+  ✔ JenisBerasSeeder: 6 jenis beras berhasil dibuat.
+  ✔ SupplierSeeder: 4 supplier berhasil dibuat.
+========================================
+  Seeding selesai!
+
+  Login Admin:
+  Email    : admin@santriabadi.com
+  Password : admin123
+
+  Login Petugas Gudang:
+  Email    : gudang@santriabadi.com
+  Password : gudang123
+========================================
+```
+
+### 6. Daftarkan locale Bahasa Indonesia (untuk translatedFormat)
+Di `config/app.php`:
+```php
+'locale' => 'id',
+'faker_locale' => 'id_ID',
+```
+
+Kemudian install locale:
+```bash
+composer require laravelcollective/html
+```
+
+Atau gunakan Carbon locale di `AppServiceProvider.php`:
+```php
+use Carbon\Carbon;
+
+public function boot(): void
+{
+    Carbon::setLocale('id');
+}
+```
+
+### 7. Jalankan server
+```bash
+php artisan serve
+```
+
+Buka browser: **http://localhost:8000**
+
+---
+
+## 🔑 Akun Default
+
+| Role | Email | Password |
+|---|---|---|
+| Admin | admin@santriabadi.com | admin123 |
+| Petugas Gudang | gudang@santriabadi.com | gudang123 |
+
+> **Penting:** Segera ganti password setelah pertama login!
+
+---
+
+## ✅ Fitur per Role
+
+| Fitur | Admin | Gudang |
+|---|---|---|
+| Dashboard & statistik | ✅ | ✅ |
+| Monitoring stok real-time | ✅ | ✅ |
+| Input stok masuk | ✅ | ✅ |
+| Input stok keluar (FIFO) | ✅ | ✅ |
+| Kelola jenis beras | ✅ | ❌ |
+| Kelola supplier | ✅ | ❌ |
+| Kelola pengguna | ✅ | ❌ |
+| Laporan + export PDF | ✅ | ❌ |
+| Edit profil sendiri | ✅ | ✅ |
+
+---
+
+## 🔄 Cara Kerja FIFO
+
+1. Saat **stok masuk** disimpan → otomatis membuat baris baru di tabel `fifo_queues` dengan `jumlah_tersisa = jumlah_masuk`.
+2. Saat **stok keluar** diproses → `FifoService::prosesKeluar()` mengambil batch dari `fifo_queues` dengan urutan `tanggal_masuk ASC` (tertua duluan).
+3. Batch dihabiskan satu per satu sampai kuota terpenuhi. Batch yang habis statusnya berubah ke `'habis'`.
+4. Seluruh operasi FIFO dibungkus `DB::transaction()` + `lockForUpdate()` untuk mencegah race condition.
+
+---
+
+## 🗄️ Struktur Tabel
+
+| Tabel | Keterangan |
+|---|---|
+| `users` | Akun pengguna sistem |
+| `jenis_beras` | Master data produk beras |
+| `suppliers` | Master data pemasok |
+| `stok_masuks` | Transaksi penerimaan beras |
+| `fifo_queues` | Antrian stok per batch (jantung FIFO) |
+| `stok_keluars` | Transaksi distribusi beras |
+
+---
+
+*SiPadi © 2026 — Aprilia Pramudita / 220101004 / Universitas Duta Bangsa Surakarta*
