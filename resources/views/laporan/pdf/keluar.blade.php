@@ -208,6 +208,7 @@
         }
     </style>
     <title>Laporan Stok Keluar - CV Santri Abadi</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
 </head>
 
 <body>

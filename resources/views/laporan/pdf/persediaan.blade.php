@@ -246,6 +246,7 @@
             text-align: center;
         }
     </style>
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <title>Laporan Persediaan - {{ $periode }}</title>
 </head>
 

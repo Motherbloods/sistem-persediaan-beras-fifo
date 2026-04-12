@@ -212,6 +212,7 @@
             text-align: right;
         }
     </style>
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <title>Laporan Stok Masuk - CV Santri Abadi</title>
 </head>
 
