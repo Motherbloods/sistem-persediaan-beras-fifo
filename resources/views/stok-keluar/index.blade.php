@@ -35,7 +35,7 @@
                             <th>Tujuan Distribusi</th>
                             <th>Tgl Keluar</th>
                             <th>Dicatat Oleh</th>
-                            <th></th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,10 +56,24 @@
                                 <td>{{ $item->tanggal_keluar->format('d M Y') }}</td>
                                 <td style="font-size:12.5px;color:#64748B;">{{ $item->user->name }}</td>
                                 <td>
-                                    <a href="{{ route('stok-keluar.show', $item) }}"
-                                        class="btn btn-sm btn-outline-secondary">
-                                        <i class="bi bi-eye"></i>
-                                    </a>
+                                    <div class="d-flex gap-1">
+                                        <a href="{{ route('stok-keluar.show', $item) }}"
+                                            class="btn btn-sm btn-outline-secondary" title="Detail">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a href="{{ route('stok-keluar.edit', $item) }}"
+                                            class="btn btn-sm btn-outline-primary" title="Edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <form action="{{ route('stok-keluar.destroy', $item) }}" method="POST"
+                                            onsubmit="return confirm('Hapus transaksi ini? Stok akan dikembalikan otomatis.')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-outline-danger" title="Hapus">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @empty

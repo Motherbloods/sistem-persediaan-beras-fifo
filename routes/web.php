@@ -34,12 +34,11 @@ Route::middleware('auth')->group(function () {
         ->names('stok-masuk');
 
     Route::resource('stok-keluar', StokKeluarController::class)
-        ->only(['index', 'create', 'store', 'show'])
+        ->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy'])
         ->names('stok-keluar');
 
     Route::get('/profil', [UserController::class, 'profil'])->name('profil');
     Route::put('/profil', [UserController::class, 'updateProfil'])->name('profil.update');
-
     Route::middleware('role:admin')->group(function () {
 
         // Master data
