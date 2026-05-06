@@ -42,11 +42,15 @@
                             <th>Harga Beli/Kg</th>
                             <th>Tgl Masuk</th>
                             <th>Dicatat Oleh</th>
-                            <th></th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse($data as $item)
+                            @php
+                                $fifo = $item->fifoQueue;
+                                $sudahTerpakai = $fifo ? (float) $fifo->jumlah_awal - (float) $fifo->jumlah_tersisa : 0;
+                            @endphp
                             <tr>
                                 <td><span class="mono">{{ $item->no_transaksi }}</span></td>
                                 <td>
@@ -64,10 +68,33 @@
                                 <td>{{ $item->tanggal_masuk->format('d M Y') }}</td>
                                 <td style="font-size:12.5px;color:#64748B;">{{ $item->user->name }}</td>
                                 <td>
-                                    <a href="{{ route('stok-masuk.show', $item) }}"
-                                        class="btn btn-sm btn-outline-secondary">
-                                        <i class="bi bi-eye"></i>
-                                    </a>
+                                    <div class="d-flex gap-1">
+                                        <a href="{{ route('stok-masuk.show', $item) }}"
+                                            class="btn btn-sm btn-outline-secondary" title="Detail">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+
+                                        <a href="{{ route('stok-masuk.edit', $item) }}"
+                                            class="btn btn-sm btn-outline-primary" title="Edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+
+                                        @if ($sudahTerpakai > 0)
+                                            <button class="btn btn-sm btn-secondary" disabled
+                                                title="{{ $item->stok_keluar_count . ' ' . $item->jenisBeras->satuan }} dari batch ini sudah dikeluarkan.">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        @else
+                                            <form action="{{ route('stok-masuk.destroy', $item->id) }}" method="POST"
+                                                onsubmit="return confirm('Hapus transaksi {{ $item->no_transaksi }}? Antrian FIFO batch ini juga akan dihapus.')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-outline-danger" title="Hapus">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </form>
+                                        @endif
+                                    </div>
                                 </td>
                             </tr>
                         @empty

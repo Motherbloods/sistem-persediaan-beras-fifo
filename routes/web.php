@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/monitoring', [MonitoringController::class, 'index'])->name('monitoring');
 
     Route::resource('stok-masuk', StokMasukController::class)
-        ->only(['index', 'create', 'store', 'show'])
+        ->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy'])
         ->names('stok-masuk');
 
     Route::resource('stok-keluar', StokKeluarController::class)
