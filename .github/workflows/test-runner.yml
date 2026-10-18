@@ -1,0 +1,19 @@
+
+name: Test Ubuntu Runner
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: self-hosted
+    steps:
+      - name: Check Ubuntu
+        run: |
+          whoami
+          hostname
+          pwd
+          uname -a
